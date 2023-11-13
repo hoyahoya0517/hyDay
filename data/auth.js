@@ -1,13 +1,11 @@
 const users = [
   {
     code: "1901",
-    realname: "김희연",
-    username: "he",
+    username: "😑⭐",
   },
   {
     code: "0517",
-    realname: "이건호",
-    username: "gun",
+    username: "🍄✨",
   },
 ];
 
