@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import helmet from "helmet";
 import calendarRouter from "./router/calendar.js";
+import authRouter from "./router/auth.js";
 import { connectDB } from "./database/database.js";
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(morgan("tiny"));
 app.use(helmet());
 
 app.use("/calendar", calendarRouter);
+app.use("/auth", authRouter);
 
 app.use((req, res, next) => {
   res.sendStatus(404);

@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
 import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
 dotenv.config();
 
 const uri = process.env.DB_HOST;
@@ -11,4 +11,7 @@ export async function connectDB() {
 }
 export function getHyDay() {
   return db.collection("hyDay");
+}
+export function getUsers() {
+  return db.collection("users");
 }
