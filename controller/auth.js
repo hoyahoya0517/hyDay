@@ -24,3 +24,10 @@ export async function me(req, res) {
   if (!foundUser) return res.sendStatus(401);
   res.status(200).json({ username: foundUser.username, token: req.token });
 }
+
+export async function nameChange(req, res) {
+  const { newname } = req.body;
+  const newUsername = await usersRepository.changeNameByCode(req.code, newname);
+  if (!newUsername) return res.sendStatus(401);
+  res.status(200).json({ newUsername });
+}

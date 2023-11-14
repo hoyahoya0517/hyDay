@@ -6,8 +6,8 @@ import { isAuth } from "../middleware/auth.js";
 
 const router = express.Router();
 
-const validateCredential = [
-  body("code").trim().notEmpty().isNumeric().isLength({ max: 4 }),
+const validateCredentialLogin = [
+  body("code").trim().notEmpty().isLength({ max: 4 }),
   (req, res, next) => {
     const error = validationResult(req);
     if (error.isEmpty()) {
@@ -17,7 +17,24 @@ const validateCredential = [
   },
 ];
 
-router.post("/login", validateCredential, authController.login);
+const validateCredentialNameChange = [
+  body("newname").trim().notEmpty().isLength({ max: 6 }),
+  (req, res, next) => {
+    const error = validationResult(req);
+    if (error.isEmpty()) {
+      return next();
+    }
+    return res.sendStatus(400);
+  },
+];
+
+router.post("/login", validateCredentialLogin, authController.login);
 router.get("/me", isAuth, authController.me);
+router.post(
+  "/name",
+  isAuth,
+  validateCredentialNameChange,
+  authController.nameChange
+);
 
 export default router;
