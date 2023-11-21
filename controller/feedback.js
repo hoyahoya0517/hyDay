@@ -29,8 +29,7 @@ export async function updateFeedback(req, res, next) {
   const foundFeedback = await feedbackRepository.getFeedbackById(id);
   if (!foundFeedback) return res.sendStatus(404);
   if (foundFeedback.code != code) return res.sendStatus(403);
-  const createdAt = new Date().toISOString();
-  feedbackRepository.updateFeedback(id, text, createdAt);
+  feedbackRepository.updateFeedback(id, text);
   res.sendStatus(200);
 }
 
