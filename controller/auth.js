@@ -22,7 +22,13 @@ function createToken(code) {
 export async function me(req, res) {
   const foundUser = await usersRepository.findByCode(req.code);
   if (!foundUser) return res.sendStatus(401);
-  res.status(200).json({ username: foundUser.username, token: req.token });
+  res
+    .status(200)
+    .json({
+      username: foundUser.username,
+      code: foundUser.code,
+      token: req.token,
+    });
 }
 
 export async function nameChange(req, res) {

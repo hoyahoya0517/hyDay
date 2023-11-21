@@ -15,3 +15,6 @@ export function getHyDay() {
 export function getUsers() {
   return db.collection("users");
 }
+export function getFeedback() {
+  return db.collection("feedback");
+}

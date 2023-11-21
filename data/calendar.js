@@ -56,6 +56,5 @@ export function updateEvent(date, events) {
 }
 
 export function deleteDay(date) {
-  console.log(date);
   getHyDay().deleteOne({ date: date });
 }
